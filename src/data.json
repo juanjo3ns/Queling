@@ -1,0 +1,37 @@
+{
+  "flight_number":{
+    "VY1234": "Barcelona",
+    "VY4321": "Dublin",
+    "VY3412": "Berlin"
+  },
+  "questions": {
+    "Population": {
+      "emojis": "",
+      "cities": {
+        "Barcelona": {
+          "answers": ["1.3M", "1.6M", "2.4M", "5M"],
+          "correct": 1
+        },
+        "Dublin": {
+          "answers": ["544K", "1.32M", "1.6M", "2.2M"],
+          "correct": 0
+          }
+
+      }
+    },
+    "Attraction": {
+      "emojis": "",
+      "cities": {
+        "Barcelona": {
+          "answers": ["Camp Nou", "Sagrada Família", "Tibidabo", "Casa Batlló"],
+          "correct": 1
+          },
+        "Dublin": {
+          "answers": ["Temple Bar", "Phoenix Park", "Molly Malone", "Trinity College"],
+          "correct": 0
+          }
+        }
+      }
+  }
+
+}

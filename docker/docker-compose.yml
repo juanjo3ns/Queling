@@ -1,0 +1,19 @@
+version: '2.3'
+
+services:
+
+  vueling-server:
+    image: vueling-server
+    container_name: vueling-server
+    working_dir: /data
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+
+    environment:
+      - PYTHONPATH=/data
+    ports:
+      - 5000:5000
+    volumes:
+      - ../:/data
+    command: tail /dev/null -f
