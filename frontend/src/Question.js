@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 const Question = (props) => {
   const { question, a1, a2, a3, a4 } = props;
   return (
-    <div style={appStyle}>
+    <div id="questions" style={appStyle}>
       <div style={{ padding: '30px' }}>
       <span style={questionStyle}>{question}</span>
       </div>
@@ -22,6 +22,7 @@ const Question = (props) => {
 }
 
 const appStyle ={
+  backgroundColor: 'rgba(120, 255, 120, 0.3)',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',

@@ -2,10 +2,12 @@ from flask import Flask, jsonify, request, render_template, send_file
 from IPython import embed
 from collections import defaultdict
 import json
+from flask_cors import CORS
 import numpy as np
 
 app = Flask(__name__)
 
+cors = CORS(app)
 
 class Questions:
 	def __init__(self):
@@ -56,7 +58,7 @@ def getQuestion():
 		sendQuestion(q_number)
 
 
-	return jsonify({questions.actual: questions.question, 'answers': questions.answers})
+	return jsonify({'question': questions.question, 'answers': questions.answers})
 
 @app.route('/answer', methods=['GET', 'POST'])
 def receiveAnswer():

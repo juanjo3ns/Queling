@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import FlightNumber from './FlightNumber';
@@ -22,7 +21,7 @@ function Main() {
       <Provider store={store}>
         <Router >
           <div id="routes">
-            <Route path="/flight_number" exact component={FlightNumber} />
+            <Route path="/" exact component={FlightNumber} />
             <Route path="/quiz" component={QuestionClass} />
           </div>
         </Router>
@@ -31,4 +30,4 @@ function Main() {
 }
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<Main />, rootElement);
