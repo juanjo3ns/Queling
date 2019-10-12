@@ -63,13 +63,10 @@ def getQuestion():
 @app.route('/answer', methods=['GET', 'POST'])
 def receiveAnswer():
 	data = request.get_json()
-	questions.stats[questions.destination_city][questions.actual][data['answer']] += 1
-	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
-
-@app.route('/sendanswer')
-def sendAnswer():
+	questions.stats[questions.destination_city][questions.actual][int(data['answer'])] += 1
 	answer = questions.data['questions'][questions.actual]['cities'][questions.destination_city]['correct']
 	return jsonify({'answer': answer})
+
 
 @app.route('/stats')
 def getStats():
