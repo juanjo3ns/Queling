@@ -6,7 +6,7 @@
   },
   "questions": {
     "Population": {
-      "emojis": "",
+      "emojis": "🚶🚶🚶🚶",
       "cities": {
         "Barcelona": {
           "answers": ["1.3M", "1.6M", "2.4M", "5M"],
@@ -20,7 +20,7 @@
       }
     },
     "Attraction": {
-      "emojis": "",
+      "emojis": "🥇🎡🎢",
       "cities": {
         "Barcelona": {
           "answers": ["Camp Nou", "Sagrada Família", "Tibidabo", "Casa Batlló"],
@@ -31,7 +31,20 @@
           "correct": 0
           }
         }
-      }
+      },
+      "Championship": {
+        "emojis": "⚽️🌍🏆",
+        "cities": {
+          "Barcelona": {
+            "answers": ["🏆🏆", "🏆🏆🏆", "🏆🏆🏆🏆", "🏆🏆🏆🏆🏆"],
+            "correct": 3
+            },
+          "Dublin": {
+            "answers": ["💩", "🏆", "🏆🏆", "🏆🏆🏆", ],
+            "correct": 0
+            }
+          }
+        }
   }
 
 }

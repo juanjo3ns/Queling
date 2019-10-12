@@ -17,3 +17,16 @@ services:
     volumes:
       - ../:/data
     command: tail /dev/null -f
+  frontend:
+    image: react
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: ./Dockerfile_frontend
+    volumes:
+      - '../frontend:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
