@@ -19,9 +19,22 @@ class Stats extends Component {
 
   }
 
+  renderResult(){
+    const { answer, correct, score } = this.props;
+
+    if(answer==correct){
+      return(
+        <span style={rightStyle}>You're right!</span>
+      )
+    }else{
+      return(
+        <span style={wrongStyle}>You're wrong!</span>
+      )
+    }
+  }
+
   render(){
-    const { answer, correct, stats, requestStats, a1, a2, a3, a4 } = this.props;
-    console.log(answer, correct, stats);
+    const { stats, requestStats, a1, a2, a3, a4 } = this.props;
     return (
       <div id="stats_class" style={statsStyle}>
         <Chart
@@ -48,15 +61,18 @@ class Stats extends Component {
             },
           }}
         />
-        <div style={{ padding: '10px' }}>
-        <Link to="/quiz">
-          <Button
-          size="lg"
-          onClick={this.nextQuestion.bind(this)}
-          variant="dark">
-          <span role="img" aria-label="arrow_right">➡️</span>
-          </Button>
-        </Link>
+        <div style={{ padding: '20px' }}>
+        {this.renderResult()}
+        </div>
+        <div>
+          <Link to="/quiz">
+            <Button
+            size="lg"
+            onClick={this.nextQuestion.bind(this)}
+            variant="dark">
+            <span role="img" aria-label="arrow_right">➡️</span>
+            </Button>
+          </Link>
         </div>
 
       </div>
@@ -75,9 +91,19 @@ const statsStyle ={
   width: '100%'
 }
 
+const rightStyle = {
+  fontSize: '30px',
+  fontWeight: 'bold',
+  color: 'rgba(20, 255, 20, 0.8)'
+}
+const wrongStyle = {
+  fontSize: '30px',
+  fontWeight: 'bold',
+  color: 'rgba(255, 0, 0, 0.8)'
+}
 const mapStateToProps = ({ environments }) => {
-  const { answer, correct, stats, requestStats, a1, a2, a3, a4, interval, counter } = environments;
-  return { answer, correct, stats, requestStats, a1, a2, a3, a4, interval, counter };
+  const { answer, correct, stats, requestStats, a1, a2, a3, a4, interval, counter, score } = environments;
+  return { answer, correct, stats, requestStats, a1, a2, a3, a4, interval, counter, score };
 }
 
 export default connect(mapStateToProps, {

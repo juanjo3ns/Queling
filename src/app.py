@@ -15,6 +15,8 @@ class Questions:
 		print(self.data)
 		self.flight_number = ''
 		self.destination_city = ''
+		self.departure = ''
+		self.weather = ''
 		self.actual = ''
 		self.question = ''
 		self.answers = []
@@ -28,11 +30,9 @@ class Questions:
 	def resetStats(self):
 		stats = {}
 		for i in list(self.data["flight_number"].keys()):
-			stats[self.data["flight_number"][i]] = {}
+			stats[self.data["flight_number"][i]["city"]] = {}
 			for q in list(self.data["questions"].keys()):
-				  stats[self.data["flight_number"][i]][q] = np.zeros(4)
-
-		print(stats)
+				  stats[self.data["flight_number"][i]["city"]][q] = np.zeros(4)
 		return stats
 
 questions = Questions()
@@ -41,13 +41,15 @@ questions = Questions()
 def login():
 	if len(request.args)>0:
 		questions.flight_number = request.args.get('flight_number')
-		questions.destination_city = questions.data['flight_number'][questions.flight_number]
-	return "correct"
+		questions.destination_city = questions.data['flight_number'][questions.flight_number]['city']
+		questions.departure = questions.data['flight_number'][questions.flight_number]['departure']
+		questions.weather = questions.data['flight_number'][questions.flight_number]['weather']
+	return jsonify({'city': questions.destination_city, 'departure': questions.departure, 'weather': questions.weather})
 
 def sendQuestion(counter):
 	q = list(questions.data['questions'].keys())
 	questions.actual = q[counter]
-	questions.question = questions.destination_city + questions.data['questions'][questions.actual]['emojis']
+	questions.question = questions.data['questions'][questions.actual]['emojis']
 	questions.answers = questions.data['questions'][questions.actual]['cities'][questions.destination_city]['answers']
 
 
@@ -73,5 +75,11 @@ def getStats():
    data = questions.stats[questions.destination_city][questions.actual]
    people = data.sum()
    return jsonify(list(np.around(data/people*100,2)))
+
+@app.route('/reset')
+def reset():
+   questions.resetStats()
+   return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
 
 app.run(host='0.0.0.0', port=5000, debug=True)

@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 
 import {
   updateFlightNumber,
-  setFlightNumber
+  setFlightNumber,
+  resetStats
 } from './actions';
 
 class FlightNumber extends Component {
@@ -20,6 +21,9 @@ class FlightNumber extends Component {
     this.props.updateFlightNumber(e.target.value);
   }
 
+  componentWillMount(){
+    this.props.resetStats();
+  }
 
   render(){
     console.log(this.props.flight_number);
@@ -72,5 +76,6 @@ const mapStateToProps = ({ environments }) => {
 
 export default connect(mapStateToProps, {
   updateFlightNumber,
-  setFlightNumber
+  setFlightNumber,
+  resetStats
 } )(FlightNumber);

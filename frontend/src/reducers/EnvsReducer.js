@@ -5,7 +5,8 @@
      UPDATE_STATS,
      CORRECT_ANSWER,
      SET_INTERVAL,
-     NEXT_QUESTION
+     NEXT_QUESTION,
+     UPDATE_SCORE
  } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -20,7 +21,8 @@ const INITIAL_STATE = {
   counter: 0,
   stats: [0,0,0,0],
   requestStats: false,
-  interval: null
+  interval: null,
+  score: 0
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -43,6 +45,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, ...action.payload };
         case NEXT_QUESTION:
             return { ...state, counter: action.payload };
+        case UPDATE_SCORE:
+            return { ...state, score: action.payload };
         default:
             return state;
     }

@@ -1,12 +1,19 @@
 {
   "flight_number":{
-    "VY1234": "Barcelona",
-    "VY4321": "Dublin",
-    "VY3412": "Berlin"
+    "VY1234": {
+      "city": "Barcelona",
+      "departure": "6:50",
+      "weather": "🌅🌬"
+    },
+    "VY4321": {
+        "city": "Dublin",
+        "departure": "7:20",
+        "weather": "🌦🌨"
+      }
   },
   "questions": {
     "Population": {
-      "emojis": "🚶🚶🚶🚶",
+      "emojis": "#👩👨?",
       "cities": {
         "Barcelona": {
           "answers": ["1.3M", "1.6M", "2.4M", "5.1M"],
@@ -19,8 +26,21 @@
 
       }
     },
+    "Beer": {
+      "emojis": "#🍺/👨‍-2018?",
+      "cities": {
+        "Barcelona": {
+          "answers": ["90", "131", "342", "478"],
+          "correct": 1
+        },
+        "Dublin": {
+          "answers": ["120", "267", "446", "512"],
+          "correct": 2
+        }
+      }
+    },
     "Attraction": {
-      "emojis": "🥇🎡🎢",
+      "emojis": "🥇🎡🎢?",
       "cities": {
         "Barcelona": {
           "answers": ["Camp Nou", "Sagrada Família", "Tibidabo", "Casa Batlló"],
@@ -32,15 +52,15 @@
           }
         }
       },
-      "Championship": {
-        "emojis": "⚽️🌍🏆",
+      "Weather": {
+        "emojis": "🔝🌡️😵?",
         "cities": {
           "Barcelona": {
-            "answers": ["🏆🏆", "🏆🏆🏆", "🏆🏆🏆🏆", "🏆🏆🏆🏆🏆"],
-            "correct": 3
+            "answers": ["37.8º", "38.2º", "40.5º", "42.2º"],
+            "correct": 1
             },
           "Dublin": {
-            "answers": ["💩", "🏆", "🏆🏆", "🏆🏆🏆"],
+            "answers": ["33.3º", "36º", "38º", "40º"],
             "correct": 0
             }
           }

@@ -5,7 +5,8 @@ import {
     SET_COUNTER,
     UPDATE_STATS,
     SET_INTERVAL,
-    NEXT_QUESTION
+    NEXT_QUESTION,
+    UPDATE_SCORE
 } from './types';
 import axios from 'axios';
 
@@ -49,6 +50,15 @@ export const updateStats = (dispatch) => {
     });
 };
 
+export const resetStats = () => (dispatch) => {
+    axios.get("http://localhost:5000/reset")
+    .then((response) => {
+      dispatch({
+        type: UPDATE_STATS,
+        payload: [0,0,0,0] });
+    });
+};
+
 export const nextQuestion = (counter) => (dispatch) => {
 
   dispatch({
@@ -57,17 +67,22 @@ export const nextQuestion = (counter) => (dispatch) => {
    });
 };
 
-export const sendAnswer = (answer) => (dispatch) => {
+export const sendAnswer = (answer, score) => (dispatch) => {
   axios.post("http://localhost:5000/answer", { 'answer': answer })
   .then((response) => {
     dispatch({
       type: CORRECT_ANSWER,
       payload: { 'answer': answer, 'correct': response.data['answer'], requestStats: true }
     });
+    if (answer==response.data['answer']){
+      dispatch({
+        type: UPDATE_SCORE,
+        payload: score+1
+      });
+    }
     const intervalID = setInterval(() => {
-      console.log("update stats");
       	updateStats(dispatch);
-    	}, 1000);
+    	}, 800);
 		dispatch({
 			type: SET_INTERVAL,
 			payload: intervalID
