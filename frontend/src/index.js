@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 import FlightNumber from './FlightNumber';
 import QuestionClass from './QuestionClass';
+import Stats from './Stats';
 
 import { HashRouter as Router, Route } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function Main() {
           <div id="routes">
             <Route path="/" exact component={FlightNumber} />
             <Route path="/quiz" component={QuestionClass} />
+            <Route path="/stats" component={Stats} />
           </div>
         </Router>
       </Provider>

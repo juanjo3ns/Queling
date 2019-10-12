@@ -1,4 +1,4 @@
-html, body, #root, #routes, #questions {
+html, body, #root, #routes, #questions, #questionclass, #stats_class {
     height: 100%;
 }
 

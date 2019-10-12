@@ -17,7 +17,6 @@ class FlightNumber extends Component {
     this.props.setFlightNumber(flight_number);
   }
   updateFlightNumber(e){
-    console.log(e.target.value);
     this.props.updateFlightNumber(e.target.value);
   }
 

@@ -1,8 +1,13 @@
  import {
      FETCH_QUESTION,
      UPDATE_FLIGHT,
-     SET_COUNTER
+     SET_COUNTER,
+     UPDATE_STATS,
+     CORRECT_ANSWER,
+     SET_INTERVAL,
+     NEXT_QUESTION
  } from '../actions/types';
+
 const INITIAL_STATE = {
   flight_number: '',
   question: '',
@@ -10,8 +15,12 @@ const INITIAL_STATE = {
   a2: '',
   a3: '',
   a4: '',
-  correct: '',
-  counter: 0
+  answer: 0,
+  correct: 0,
+  counter: 0,
+  stats: [0,0,0,0],
+  requestStats: false,
+  interval: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -27,6 +36,12 @@ export default (state = INITIAL_STATE, action) => {
         case UPDATE_FLIGHT:
             return { ...state, flight_number: action.payload };
         case SET_COUNTER:
+            return { ...state, counter: action.payload };
+        case UPDATE_STATS:
+            return { ...state, stats: action.payload };
+        case CORRECT_ANSWER:
+            return { ...state, ...action.payload };
+        case NEXT_QUESTION:
             return { ...state, counter: action.payload };
         default:
             return state;
