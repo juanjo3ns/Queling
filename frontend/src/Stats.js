@@ -20,15 +20,18 @@ class Stats extends Component {
   }
 
   renderResult(){
-    const { answer, correct, score } = this.props;
-
+    const { answer, correct, score, a1, a2, a3, a4 } = this.props;
+    const answer_list = [a1,a2,a3,a4];
     if(answer==correct){
       return(
         <span style={rightStyle}>You're right!</span>
       )
     }else{
       return(
-        <span style={wrongStyle}>You're wrong!</span>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span style={wrongStyle}>You're wrong!</span>
+          <span>Correct answer: {answer_list[correct]}</span>
+        </div>
       )
     }
   }
@@ -38,7 +41,7 @@ class Stats extends Component {
     return (
       <div id="stats_class" style={statsStyle}>
         <Chart
-          width={500}
+          width={350}
           height={500}
           chartType="ColumnChart"
           loader={<div>Loading Chart</div>}

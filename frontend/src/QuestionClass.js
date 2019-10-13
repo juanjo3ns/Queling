@@ -12,6 +12,17 @@ import {
 
 class QuestionClass extends Component {
 
+  renderGeneral(){
+    const { city, departure, weather } = this.props;
+    return(
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <span style={dataStyle}>🔜 {city}</span>
+        <span style={dataStyle}>🛫 {departure}</span>
+        <span style={dataStyle}>{weather}</span>
+      </div>
+    );
+  }
+
   onResponse(e){
     const { score } = this.props;
     this.props.sendAnswer(e.target.id, score);
@@ -31,6 +42,7 @@ class QuestionClass extends Component {
     if (counter==4){
       return(
         <div id="finalpage" style={appStyle}>
+        {this.renderGeneral()}
           <div style={{ padding: '30px' }}>
             <span style={questionStyle}>Enjoy your flight!</span>
           </div>
@@ -45,6 +57,8 @@ class QuestionClass extends Component {
     }else{
       return (
         <div id="questions" style={appStyle}>
+        {this.renderGeneral()}
+
         <div style={{ padding: '30px' }}>
         <span style={questionStyle}>{question}</span>
         </div>
@@ -85,6 +99,11 @@ class QuestionClass extends Component {
     }
   }
 }
+const dataStyle={
+  fontSize: '40px',
+  fontWeight: 'bold',
+  color: 'rgba(0, 0, 0, 0.6)'
+}
 const appStyle = {
   backgroundColor: 'rgba(120, 255, 120, 0.3)',
   display: 'flex',
@@ -106,8 +125,8 @@ const vuelingStyle={
   color: 'rgba(0, 0, 0, 0.6)'
 }
 const mapStateToProps = ({ environments }) => {
-  const { question, a1, a2, a3, a4, counter, score } = environments;
-  return { question, a1, a2, a3, a4, counter, score };
+  const { question, a1, a2, a3, a4, counter, score, city, departure, weather } = environments;
+  return { question, a1, a2, a3, a4, counter, score, city, departure, weather };
 }
 
 export default connect(mapStateToProps, {

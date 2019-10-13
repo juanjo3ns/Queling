@@ -6,3 +6,4 @@ export const UPDATE_STATS = "update_stats";
 export const SET_INTERVAL = "set_interval";
 export const NEXT_QUESTION = "nextQuestion";
 export const UPDATE_SCORE = "update_score";
+export const SET_DATA = "set_data";

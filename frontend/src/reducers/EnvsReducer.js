@@ -6,12 +6,16 @@
      CORRECT_ANSWER,
      SET_INTERVAL,
      NEXT_QUESTION,
-     UPDATE_SCORE
+     UPDATE_SCORE,
+     SET_DATA
  } from '../actions/types';
 
 const INITIAL_STATE = {
   flight_number: '',
+  departure: '',
+  weather: '',
   question: '',
+  city: '',
   a1: '',
   a2: '',
   a3: '',
@@ -47,6 +51,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, counter: action.payload };
         case UPDATE_SCORE:
             return { ...state, score: action.payload };
+        case SET_DATA:
+            return { ...state, ...action.payload };
         default:
             return state;
     }

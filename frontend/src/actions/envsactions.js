@@ -6,13 +6,16 @@ import {
     UPDATE_STATS,
     SET_INTERVAL,
     NEXT_QUESTION,
-    UPDATE_SCORE
+    UPDATE_SCORE,
+    SET_DATA
 } from './types';
 import axios from 'axios';
 
+// const url = "http://localhost:5000";
+const url = "http://backend3.ngrok.io";
 
 export const getQuestion = (number) =>  (dispatch) => {
-    axios.get("http://localhost:5000/question", {
+    axios.get(url.concat("/question"), {
       params: {
         qnumber: number
       }})
@@ -21,7 +24,7 @@ export const getQuestion = (number) =>  (dispatch) => {
     });
 };
 export const setFlightNumber = (flight_number) =>  (dispatch) => {
-  axios.get("http://localhost:5000/login", {
+  axios.get(url.concat("/login"), {
     params: {
       flight_number: flight_number
     }})
@@ -30,6 +33,11 @@ export const setFlightNumber = (flight_number) =>  (dispatch) => {
       type: SET_COUNTER,
       payload: 0
     });
+    dispatch({
+      type: SET_DATA,
+      payload: { departure: response.data['departure'], city: response.data['city'], weather: response.data['weather'] }
+    });
+
   });
 
 };
@@ -41,8 +49,7 @@ export const updateFlightNumber = (flight_number) => (dispatch) => {
 };
 
 export const updateStats = (dispatch) => {
-    console.log("updating stats");
-    axios.get("http://localhost:5000/stats")
+    axios.get(url.concat("/stats"))
     .then((response) => {
       dispatch({
         type: UPDATE_STATS,
@@ -51,7 +58,7 @@ export const updateStats = (dispatch) => {
 };
 
 export const resetStats = () => (dispatch) => {
-    axios.get("http://localhost:5000/reset")
+    axios.get(url.concat("/reset"))
     .then((response) => {
       dispatch({
         type: UPDATE_STATS,
@@ -68,7 +75,7 @@ export const nextQuestion = (counter) => (dispatch) => {
 };
 
 export const sendAnswer = (answer, score) => (dispatch) => {
-  axios.post("http://localhost:5000/answer", { 'answer': answer })
+  axios.post(url.concat("/answer"), { 'answer': answer })
   .then((response) => {
     dispatch({
       type: CORRECT_ANSWER,
