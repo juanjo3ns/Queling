@@ -72,9 +72,12 @@ def receiveAnswer():
 
 @app.route('/stats')
 def getStats():
-   data = questions.stats[questions.destination_city][questions.actual]
-   people = data.sum()
-   return jsonify(list(np.around(data/people*100,2)))
+	data = questions.stats[questions.destination_city]
+	new_object = {}
+	for i, d in enumerate(list(data.keys())):
+		new_object[str(i)] = list(data[d])
+	print(new_object)
+	return jsonify(new_object)
 
 @app.route('/reset')
 def reset():

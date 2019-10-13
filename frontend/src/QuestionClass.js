@@ -50,7 +50,7 @@ class QuestionClass extends Component {
             <span style={vuelingStyle}>+{score*10} Vueling Points!</span>
           </div>
           <div style={{ padding: '30px' }}>
-            <span style={questionStyle}>✈️✈️✈️✈️✈️✈️✈️</span>
+            <span style={questionStyle}>✈️✈️✈️✈️</span>
           </div>
         </div>
       );

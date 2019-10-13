@@ -23,7 +23,12 @@ const INITIAL_STATE = {
   answer: 0,
   correct: 0,
   counter: 0,
-  stats: [0,0,0,0],
+  stats: {
+    '0':[0,0,0,0],
+    '1':[0,0,0,0],
+    '2':[0,0,0,0],
+    '3':[0,0,0,0]
+  },
   requestStats: false,
   interval: null,
   score: 0

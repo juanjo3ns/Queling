@@ -37,7 +37,7 @@ class Stats extends Component {
   }
 
   render(){
-    const { stats, requestStats, a1, a2, a3, a4 } = this.props;
+    const { stats, requestStats, a1, a2, a3, a4, counter } = this.props;
     return (
       <div id="stats_class" style={statsStyle}>
         <Chart
@@ -47,10 +47,10 @@ class Stats extends Component {
           loader={<div>Loading Chart</div>}
           data={[
             ['', ''],
-            [a1, stats[0]],
-            [a2, stats[1]],
-            [a3, stats[2]],
-            [a4, stats[3]]
+            [a1, stats[counter][0]],
+            [a2, stats[counter][1]],
+            [a3, stats[counter][2]],
+            [a4, stats[counter][3]]
             ]}
           options={{
             title: 'Votations',
